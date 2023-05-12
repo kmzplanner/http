@@ -28,15 +28,15 @@ public class Client {
                         .build())
                 .build();
 
-        HttpGet request = new HttpGet(REMOTE_URL); //посылаем запрос по URL
-        //указываем тип, который будем запрашивать
+        HttpGet request = new HttpGet(REMOTE_URL);
+
         request.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
 
-        CloseableHttpResponse response = httpClient.execute(request); //получаем ответ от него
+        CloseableHttpResponse response = httpClient.execute(request);
 
         String body = new String(response.getEntity().getContent().readAllBytes(), StandardCharsets.UTF_8);
 
-        httpClient.close(); //не забываем закрыть так как он не автозакрываемый
+        httpClient.close();
 
         readFact(body);
     }
@@ -48,7 +48,7 @@ public class Client {
         });
 
         facts.stream()
-                .filter(fact -> fact.getUpvotes() > 0) //отсортировываем только факты набравшие хотя бы 1 голос
-                .forEach(System.out::println); //и выводим их
+                .filter(fact -> fact.getUpvotes() > 0)
+                .forEach(System.out::println);
     }
 }

@@ -1,13 +1,13 @@
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class FactAboutCat { //это pojo объект
+public class FactAboutCat {
     private final String id;
     private final String text;
     private final String type;
     private final String user;
     private final int upvotes;
 
-    public FactAboutCat( //создаем конструктор, который заполнит нам поля по json файлу, полученному по URL
+    public FactAboutCat(
                          @JsonProperty("id") String id,
                          @JsonProperty("text") String text,
                          @JsonProperty("type") String type,
